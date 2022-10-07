@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 from calc_pixel_values import calc_pixel_values
 from create_image import create_image
-from generic_algoritm import algoritm
+from algoritms.generic_algoritm import algoritm
 from informations_to_image import informations_to_image
 from PIL import Image
 
