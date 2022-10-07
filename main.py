@@ -17,6 +17,7 @@ def main():
     #img_base = Image.open("imgs/campo.jpg")
     img_base = Image.open("imgs/campoAgua.jpg")
     #img_base = create_image()
+    #img_base = Image.open("imgs/florestaVermelha.jpg")
 
     img = img_base
     img_process = img_base
