@@ -1,5 +1,6 @@
 from PIL import Image
 from matplotlib import pyplot as plt
+import matplotlib.image as mpimg
 from calc_pixel_values import calc_pixel_values
 from create_image import create_image
 from informations_to_image import informations_to_image
@@ -10,18 +11,23 @@ from algoritms.red.red_decrease import red_decrease
 from algoritms.red.red_plus import red_plus
 from algoritms.green.green_decrease import green_decrease
 from algoritms.green.green_plus import green_plus
+from rgb_to_img import calc_rgb
+from graph_to_img import generate_graph
 
 def main():
     #img_base = Image.open("imgs/praia.jpg")
     #img_base = Image.open("imgs/perfil.jpg")
     #img_base = Image.open("imgs/campo.jpg")
-    img_base = Image.open("imgs/campoAgua.jpg")
+    #img_base = Image.open("imgs/campoAgua.jpg")
     #img_base = create_image()
-    #img_base = Image.open("imgs/florestaVermelha.jpg")
+    img_base = Image.open("imgs/florestaVermelha.jpg")
 
     img = img_base
     img_process = img_base
     width, height, dimensions, pixel_values = informations_to_image(img_base)
+    r,g,b = calc_rgb(width, height, pixel_values)
+    generate_graph(r,g,b,"graf_img_base")
+
     x = 100
     while (x != 0):
         img = img_process
@@ -55,27 +61,56 @@ def main():
             img_process = algoritm(width, height, dimensions, calc_pixel_values(img), img)
 
         if (x == 0):
-            f, axarr = plt.subplots(2)
+            r,g,b = calc_rgb(width, height, calc_pixel_values(img_process))
+            generate_graph(r,g,b,"graf_img_finish")
+            
+            f, axarr = plt.subplots(2,2)
             print("Obrigado por utilizar nosso algoritmo!")
-            axarr[0].imshow(img_base)
-            axarr[0].title.set_text('Figura Inicial')
-            axarr[0].axis('off')
-            axarr[1].imshow(img_process)
-            axarr[1].title.set_text('Figura Processada')
-            axarr[1].axis('off')
+            axarr[0,0].imshow(img_base)
+            axarr[0,0].title.set_text('Figura Inicial')
+            axarr[0,0].axis('off')
+            axarr[0,1].imshow(mpimg.imread( "./graf_img_base.png"))
+            axarr[0,1].title.set_text('Cor Na Figura Inicial')
+            axarr[0,1].axis('off')
+
+            axarr[1,0].imshow(img_process)
+            axarr[1,0].title.set_text('Figura Processada')
+            axarr[1,0].axis('off')
+            axarr[1,1].imshow(mpimg.imread( "./graf_img_finish.png"))
+            axarr[1,1].title.set_text('Cor Na Figura Em Processada')
+            axarr[1,1].axis('off')
+
             plt.show()
         elif (x >= 0 and x <= 13):
-            f, axarr = plt.subplots(3)
+
+            r,g,b = calc_rgb(width, height, calc_pixel_values(img_process))
+            generate_graph(r,g,b,"graf_img_finish")
+
+            rr,gg,bb = calc_rgb(width, height, calc_pixel_values(img))
+            generate_graph(rr,gg,bb,"graf_img_im_process")
             
-            axarr[0].imshow(img_base)
-            axarr[0].title.set_text('Figura Inicial')
-            axarr[0].axis('off')
-            axarr[1].imshow(img)
-            axarr[1].title.set_text('Figura Em Processamento')
-            axarr[1].axis('off')
-            axarr[2].imshow(img_process)
-            axarr[2].title.set_text('Figura Processada')
-            axarr[2].axis('off')
+            f, axarr = plt.subplots(3,2)
+            
+            axarr[0,0].imshow(img_base)
+            axarr[0,0].title.set_text('Figura Inicial')
+            axarr[0,0].axis('off')
+            axarr[0,1].imshow(mpimg.imread( "./graf_img_base.png"))
+            axarr[0,1].title.set_text('Cor Na Figura Inicial')
+            axarr[0,1].axis('off')
+
+            axarr[1,0].imshow(img)
+            axarr[1,0].title.set_text('Figura No Processamento Anterior')
+            axarr[1,0].axis('off')
+            axarr[1,1].imshow(mpimg.imread( "./graf_img_im_process.png"))
+            axarr[1,1].title.set_text('Cor Na Figura No Processamento Anterior')
+            axarr[1,1].axis('off')
+
+            axarr[2,0].imshow(img_process)
+            axarr[2,0].title.set_text('Figura Em Processamento')
+            axarr[2,0].axis('off')
+            axarr[2,1].imshow(mpimg.imread( "./graf_img_finish.png"))
+            axarr[2,1].title.set_text('Cor Na Figura Em Processamento')
+            axarr[2,1].axis('off')
             plt.show()
         else:
             print("-------------------\nFunção invalida!")
