@@ -17,16 +17,14 @@ from graph_to_img import generate_graph
 def main():
     #img_base = Image.open("imgs/praia.jpg")
     #img_base = Image.open("imgs/perfil.jpg")
-    #img_base = Image.open("imgs/campo.jpg")
+    img_base = Image.open("imgs/campo.jpg")
     #img_base = Image.open("imgs/campoAgua.jpg")
+    #img_base = Image.open("imgs/florestaVermelha.jpg")
     #img_base = create_image()
-    img_base = Image.open("imgs/florestaVermelha.jpg")
-
     img = img_base
     img_process = img_base
     width, height, dimensions, pixel_values = informations_to_image(img_base)
-    r,g,b = calc_rgb(width, height, pixel_values)
-    generate_graph(r,g,b,"graf_img_base")
+    generate_graph(img_base,"graf_img_base")
 
     x = 100
     while (x != 0):
@@ -61,8 +59,7 @@ def main():
             img_process = algoritm(width, height, dimensions, calc_pixel_values(img), img)
 
         if (x == 0):
-            r,g,b = calc_rgb(width, height, calc_pixel_values(img_process))
-            generate_graph(r,g,b,"graf_img_finish")
+            generate_graph(img_process,"graf_img_finish")
             
             f, axarr = plt.subplots(2,2)
             print("Obrigado por utilizar nosso algoritmo!")
@@ -82,12 +79,8 @@ def main():
 
             plt.show()
         elif (x >= 0 and x <= 13):
-
-            r,g,b = calc_rgb(width, height, calc_pixel_values(img_process))
-            generate_graph(r,g,b,"graf_img_finish")
-
-            rr,gg,bb = calc_rgb(width, height, calc_pixel_values(img))
-            generate_graph(rr,gg,bb,"graf_img_im_process")
+            generate_graph(img_process,"graf_img_finish")
+            generate_graph(img,"graf_img_im_process")
             
             f, axarr = plt.subplots(3,2)
             

@@ -13,7 +13,7 @@ def calc_rgb(width, height, pixel_values):
             sum_pixel_g += pixel[1]
             sum_pixel_b += pixel[2]
 
-    r = sum_pixel_r/(width*height)
-    g = sum_pixel_g/(width*height)
-    b = sum_pixel_b/(width*height)
+    r = sum_pixel_r
+    g = sum_pixel_g
+    b = sum_pixel_b
     return r, g, b

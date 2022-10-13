@@ -12,7 +12,9 @@ from rgb_to_img import calc_rgb
 
 def algoritm(width, height, dimensions, pixel_values, img):
     r, g, b = calc_rgb(width, height, pixel_values)
-
+    r = r/(width*height)
+    g = g/(width*height)
+    b = b/(width*height)
     if (r > g and r > b):
         print("Red")
         img_process = red_plus(width, height, dimensions, calc_pixel_values(img), 70)
