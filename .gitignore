@@ -1,12 +1,5 @@
-imgs/1.jpg
-imgs/2.jpg
-imgs/3.jpg
-imgs/4.jpg
-imgs/m1.png
-imgs/m2.png
+*.jpg
 __pycache__
 R1.docx
 R1.pdf
-graf_img_base.png
-graf_img_finish.png
-graf_img_im_process.png
+*.png
