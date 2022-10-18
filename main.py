@@ -18,10 +18,10 @@ from graph_to_img import generate_graph
 
 
 def main():
-    #img_base = Image.open("imgs/praia.jpg")
+    img_base = Image.open("imgs/praia.jpg")
     #img_base = Image.open("imgs/perfil.jpg")
     #img_base = Image.open("imgs/campo.jpg")
-    img_base = Image.open("imgs/campoAgua.jpg")
+    #img_base = Image.open("imgs/campoAgua.jpg")
     #img_base = Image.open("imgs/florestaVermelha.jpg")
     #img_base = create_image()
     img = img_base
