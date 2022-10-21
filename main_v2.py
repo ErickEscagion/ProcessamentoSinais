@@ -42,27 +42,7 @@ def main():
                 width, height, dimensions, calc_pixel_values(randon_algoritm(
                     width, height, dimensions, calc_pixel_values(img_base), 0, 20)), 70)), -2, 2)), 50)
 
-    f, axarr = plt.subplots(2, 2)
-
-    print("Obrigado por utilizar nosso algoritmo!")
-    axarr[0, 0].imshow(img_base)
-    axarr[0, 0].title.set_text('Figura Inicial')
-    axarr[0, 0].axis('off')
-
-    axarr[0, 1].imshow(img_blue)
-    axarr[0, 1].title.set_text('Figura Azul')
-    axarr[0, 1].axis('off')
-
-    axarr[1, 0].imshow(img_red)
-    axarr[1, 0].title.set_text('Figura Vermelha')
-    axarr[1, 0].axis('off')
-
-    axarr[1, 1].imshow(img_green)
-    axarr[1, 1].title.set_text('Figura Verde')
-    axarr[1, 1].axis('off')
-
-    plt.show()
-
+    generate_graph(img_blue, "graf_img_base")
     generate_graph(img_blue, "graf_img_blue")
     generate_graph(img_red, "graf_img_red")
     generate_graph(img_green, "graf_img_green")
@@ -92,19 +72,40 @@ def main():
     generate_graph_results(abs(res_r_red), abs(
         res_g_red), abs(res_b_red), "results_red")
 
-    f, axarr = plt.subplots(3)
-    axarr[0].imshow(mpimg.imread("./results_green.png"))
-    axarr[0].title.set_text('Figura Verde')
-    axarr[0].axis('off')
+    f, axarr = plt.subplots(4, 2)
 
-    axarr[1].imshow(mpimg.imread("./results_blue.png"))
-    axarr[1].title.set_text('Figura Azul')
-    axarr[1].axis('off')
+    print("Obrigado por utilizar nosso algoritmo!")
+    axarr[0, 0].imshow(img_base)
+    axarr[0, 0].title.set_text('Figura Inicial')
+    axarr[0, 0].axis('off')
 
-    axarr[2].imshow(mpimg.imread("./results_red.png"))
-    axarr[2].title.set_text('Figura Vermelha')
-    axarr[2].axis('off')
+    axarr[0, 1].imshow(mpimg.imread("./graf_img_base.png"))
+    axarr[0, 1].title.set_text('Grafico da Figura Inicial')
+    axarr[0, 1].axis('off')
 
+    axarr[1, 0].imshow(img_red)
+    axarr[1, 0].title.set_text('Figura Vermelha')
+    axarr[1, 0].axis('off')
+
+    axarr[1, 1].imshow(mpimg.imread("./results_red.png"))
+    axarr[1, 1].title.set_text('Grafico da Figura Vermelha')
+    axarr[1, 1].axis('off')
+
+    axarr[2, 0].imshow(img_blue)
+    axarr[2, 0].title.set_text('Figura Azul')
+    axarr[2, 0].axis('off')
+
+    axarr[2, 1].imshow(mpimg.imread("./results_blue.png"))
+    axarr[2, 1].title.set_text('Grafico da Figura Azul')
+    axarr[2, 1].axis('off')
+
+    axarr[3, 0].imshow(img_green)
+    axarr[3, 0].title.set_text('Figura Verde')
+    axarr[3, 0].axis('off')
+
+    axarr[3, 1].imshow(mpimg.imread("./results_green.png"))
+    axarr[3, 1].title.set_text('Grafico da Figura Verde')
+    axarr[3, 1].axis('off')
     plt.show()
 
 
