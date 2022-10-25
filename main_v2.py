@@ -5,12 +5,8 @@ from algoritms.randon_algoritm import randon_algoritm
 from calc_pixel_values import calc_pixel_values
 from create_image import create_image
 from informations_to_image import informations_to_image
-from algoritms.generic_algoritm import algoritm
-from algoritms.blue.blue_decrease import blue_decrease
 from algoritms.blue.blue_plus import blue_plus
-from algoritms.red.red_decrease import red_decrease
 from algoritms.red.red_plus import red_plus
-from algoritms.green.green_decrease import green_decrease
 from algoritms.green.green_plus import green_plus
 from results import generate_graph_results
 from rgb_to_img import calc_rgb
@@ -18,10 +14,10 @@ from graph_to_img import generate_graph
 
 
 def main():
-    # img_base = Image.open("imgs/praia.jpg")
+    img_base = Image.open("imgs/praia.jpg")
     # img_base = Image.open("imgs/perfil.jpg")
     # img_base = Image.open("imgs/campo.jpg")
-    img_base = Image.open("imgs/campoAgua.jpg")
+    # img_base = Image.open("imgs/campoAgua.jpg")
     # img_base = Image.open("imgs/florestaVermelha.jpg")
     # img_base = create_image()
     width, height, dimensions, pixel_values = informations_to_image(img_base)
@@ -41,6 +37,15 @@ def main():
             width, height, dimensions, calc_pixel_values(green_plus(
                 width, height, dimensions, calc_pixel_values(randon_algoritm(
                     width, height, dimensions, calc_pixel_values(img_base), 0, 20)), 70)), -2, 2)), 50)
+
+    im = Image.fromarray(img_blue)
+    im.save("img_blue.png")
+
+    im = Image.fromarray(img_red)
+    im.save("img_red.png")
+
+    im = Image.fromarray(img_green)
+    im.save("img_green.png")
 
     generate_graph(img_base, "graf_img_base")
     generate_graph(img_blue, "graf_img_blue")
