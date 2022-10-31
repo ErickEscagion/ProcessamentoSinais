@@ -14,7 +14,11 @@ from graph_to_img import generate_graph
 
 
 def main():
-    img_base = Image.open("imgs/praia.jpg")
+    #img_base = Image.open("Imagens/1/base.jpg")
+    #img_base = Image.open("Imagens/2/base.jpg")
+    #img_base = Image.open("Imagens/3/base.jpg")
+    img_base = Image.open("Imagens/4/base.jpg")
+    #img_base = Image.open("Imagens/5/base.jpg")
     # img_base = Image.open("imgs/perfil.jpg")
     # img_base = Image.open("imgs/campo.jpg")
     # img_base = Image.open("imgs/campoAgua.jpg")
